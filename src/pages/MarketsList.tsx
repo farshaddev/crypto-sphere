@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMarkets } from "../redux/marketSlice";
 import { AppDispatch } from "../redux/store";
-
+import { Link } from "react-router-dom";
 
 const MarketsList: React.FC = () => {
 	const dispatch: AppDispatch = useDispatch();
@@ -51,7 +51,9 @@ const MarketsList: React.FC = () => {
 			<ul>
 				{filteredMarkets.map((market) => (
 					<li key={market.pair_id}>
-                        {market.name.fa}
+						<Link to={`/market/${market.pair_id}`}>
+                        	{market.name.fa}
+						</Link>
 					</li>
 				))}
 			</ul>

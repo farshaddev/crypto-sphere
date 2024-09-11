@@ -1,13 +1,14 @@
 import React from "react";
 import MarketsList from "./pages/MarketsList";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MarketDetails from "./pages/MarketDetails";
 
 const App: React.FC = () => {
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={<MarketsList />} />
-				<Route path="/market/:id" element={<>MarketDetails</>} />
+				<Route path="/market/:id" element={<MarketDetails />} />
 			</Routes>
 		</Router>
 	);
