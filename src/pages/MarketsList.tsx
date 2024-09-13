@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getMarkets } from "../redux/marketSlice";
-import { AppDispatch } from "../redux/store";
+import { getMarkets, clearError } from "../redux/marketSlice";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 const MarketsList: React.FC = () => {
-	const dispatch: AppDispatch = useDispatch();
-	const { markets } = useSelector((state: any) => state.market);
+	const dispatch = useAppDispatch();
+	const { markets, loading, error } = useAppSelector(
+		(state) => state.market
+	);
 	const [search, setSearch] = useState("");
 	const [sortKey, setSortKey] = useState<"name" | "price">("name");
 
-    useEffect(() => {
+	useEffect(() => {
 		dispatch(getMarkets());
 
 		const interval = setInterval(() => {
@@ -19,6 +20,11 @@ const MarketsList: React.FC = () => {
 
 		return () => clearInterval(interval);
 	}, [dispatch]);
+
+	const handleRetry = () => {
+		dispatch(clearError());
+		dispatch(getMarkets());
+	};
 
 	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearch(event.target.value);
@@ -33,6 +39,16 @@ const MarketsList: React.FC = () => {
 	const filteredMarkets = sortedMarkets.filter((market) =>
 		market.name.en.toLowerCase().includes(search.toLowerCase())
 	);
+
+	if (loading) return <div>Loading...</div>;
+
+	if (error)
+		return (
+			<div>
+				<div>Error: {error}</div>
+				<button onClick={handleRetry}>Retry</button>
+			</div>
+		);
 
 	return (
 		<div>
@@ -52,7 +68,7 @@ const MarketsList: React.FC = () => {
 				{filteredMarkets.map((market) => (
 					<li key={market.pair_id}>
 						<Link to={`/market/${market.pair_id}`}>
-                        	{market.name.fa}
+							{market.name.fa}
 						</Link>
 					</li>
 				))}

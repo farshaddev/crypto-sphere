@@ -11,16 +11,16 @@ export const getMarkets = createAsyncThunk<Market[], void>(
 );
 
 export const getCurrencies = createAsyncThunk<Currency[], void>(
-    'currency/getCurrencies',
-    async () => {
-      const response = await fetchCurrencies();
-      return response.data.data;
-    }
-  );
+	"currency/getCurrencies",
+	async () => {
+		const response = await fetchCurrencies();
+		return response.data.data;
+	}
+);
 
 const initialState: MarketState = {
 	markets: [],
-    currencies: [], 
+	currencies: [],
 	loading: false,
 	error: null,
 };
@@ -28,7 +28,11 @@ const initialState: MarketState = {
 const marketSlice = createSlice({
 	name: "market",
 	initialState,
-	reducers: {},
+	reducers: {
+		clearError(state) {
+			state.error = null;
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(getMarkets.fulfilled, (state, action) => {
 			state.markets = action.payload;
@@ -57,4 +61,5 @@ const marketSlice = createSlice({
 	},
 });
 
+export const { clearError } = marketSlice.actions;
 export default marketSlice.reducer;

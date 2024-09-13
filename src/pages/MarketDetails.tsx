@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../hooks/redux';
 
 const MarketDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { markets } = useSelector((state: any) => state.market);
+  const { markets } = useAppSelector((state) => state.market);
   const market = markets.find((m: any) => m.pair_id.toString() === id);
 
   if (!market) return <div>Market not found</div>;
