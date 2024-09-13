@@ -1,5 +1,12 @@
 {
     "searchTitle": "Search markets",
     "tableTitleName": "Name",
-    "tableTitlePrice": "Latest Price"
+    "tableTitlePrice": "Latest Price",
+    "loading": "Updating ...",
+    "retry": "Retry",
+    "return": "Return",
+    "englishName": "English Name",
+    "price": "Price",
+    "changes": "Changes in 24HRs",
+    "sells": "Sells"
 }

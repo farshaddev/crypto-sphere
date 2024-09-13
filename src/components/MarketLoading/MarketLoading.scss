@@ -1,0 +1,25 @@
+.loading {
+    background-color: var(--info-color);
+    color: var(--primary-border-color);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-scale-2);
+    padding: var(--padding-scale-1);
+    border-radius: var(--radius-scale-1);
+    min-width: 250px;
+    justify-content: center;
+    &__icon {
+        animation: rotate 1s linear infinite;
+        font-size: var(--font-scale-3);
+        margin-right: 8px;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

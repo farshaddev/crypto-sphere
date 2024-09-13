@@ -1,7 +1,7 @@
 import React from "react";
 import MarketsList from "./pages/MarketList/MarketsList";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MarketDetails from "./pages/MarketDetails";
+import MarketDetails from "./pages/MarketDetails/MarketDetails";
 import useI18n from "./hooks/useI18n";
 import "./app.scss"
 

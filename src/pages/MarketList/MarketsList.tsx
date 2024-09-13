@@ -5,6 +5,9 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import MarketListHeader from "../../components/MarketListHeader/MarketListHeader";
 import MarketDataTable from "../../components/MarketDataTable/MarketDataTable";
 import "./MarketList.scss"
+import MarketLoading from "../../components/MarketLoading/MarketLoading";
+import Floater from "../../components/Floater/Floater";
+import MarketError from "../../components/MarketError/MarketError";
 
 const MarketsList: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -46,20 +49,15 @@ const MarketsList: React.FC = () => {
 		market.name.en.toLowerCase().includes(search.toLowerCase())
 	);
 
-	if (loading) return <div>Loading...</div>;
-
-	if (error)
-		return (
-			<div>
-				<div>Error: {error}</div>
-				<button onClick={handleRetry}>Retry</button>
-			</div>
-		);
-
 	return (
 		<div className="market-list">
 			<MarketListHeader search={search} handleSearch={handleSearch} />
 			<MarketDataTable setSortKey={setSortKey} handleRowClick={handleRowClick} filteredMarkets={filteredMarkets} />
+
+			<Floater>
+				{loading && <MarketLoading />}
+				{!loading && error && <MarketError handleRetry={handleRetry} errorText={error} />}
+			</Floater>
 		</div>
 	);
 };

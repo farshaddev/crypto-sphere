@@ -12,6 +12,12 @@
 
     // borders
     --primary-border-color: #F5F5F5;
+    --secondary-border-color: #E4E5E6;
+
+    // colors
+    --danger-color: #e91e63;
+    --info-color: #1ea5e9;
+    --solid-color: #1F2630;
 
     // font-size
     --font-scale-1: 18px;
@@ -32,6 +38,10 @@
 
 [data-theme="dark"] {
     // texts
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
