@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getMarkets, clearError } from "../redux/marketSlice";
+import { getMarkets, clearError } from "../redux/slices/marketSlice";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { useTranslation } from 'react-i18next';
 
 const MarketsList: React.FC = () => {
+	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const { markets, loading, error } = useAppSelector(
 		(state) => state.market
@@ -56,7 +58,7 @@ const MarketsList: React.FC = () => {
 				type="text"
 				value={search}
 				onChange={handleSearch}
-				placeholder="Search markets..."
+				placeholder={t("searchTitle")}
 			/>
 			<select
 				onChange={(e) => setSortKey(e.target.value as "name" | "price")}
