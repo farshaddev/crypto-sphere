@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+
+:root {
+	// texts
+	--primary-text-color: #41474f;
+	--secondary-text-color: #62676e;
+	--title-text-color: #8f9398;
+	--placeholder-text-color: #bcbec1;
+
+	// icons
+	--primary-icon-color: #e0e0e0;
+
+	// borders
+	--primary-border-color: #f5f5f5;
+	--secondary-border-color: #e4e5e6;
+
+	// colors
+	--danger-color: #e91e63;
+	--info-color: #1ea5e9;
+	--solid-color: #1f2630;
+	--white-color: #ffffff;
+    --light-search-color: #ffffff;
+
+	// font-size
+	--font-scale-1: 18px;
+	--font-scale-2: 16px;
+	--font-scale-3: 14px;
+	--font-scale-4: 12px;
+
+	// border-radius
+	--radius-scale-1: 8px;
+
+	// padding
+	--padding-scale-1: 8px;
+
+	// gap
+	--gap-scale-1: 10px;
+	--gap-scale-2: 8px;
+}
+
+[data-theme="dark"] {
+	/* Texts */
+	--primary-text-color: #c1c7cd;
+	--secondary-text-color: #a3a8af;
+	--title-text-color: #888c92;
+	--placeholder-text-color: #70757a;
+
+	/* Icons */
+	--primary-icon-color: #b0b3b8;
+
+	/* Borders */
+	--primary-border-color: #444a50;
+	--secondary-border-color: #3a3f45;
+
+	/* Colors */
+	--danger-color: #ff4561;
+	--info-color: #3fb8ff;
+	--solid-color: #c1c7cd;
+	--white-color: #192226;
+    --light-search-color: #192226;
+
+	/* Font Size */
+	--font-scale-1: 18px;
+	--font-scale-2: 16px;
+	--font-scale-3: 14px;
+	--font-scale-4: 12px;
+
+	/* Border Radius */
+	--radius-scale-1: 8px;
+
+	/* Padding */
+	--padding-scale-1: 8px;
+
+	/* Gap */
+	--gap-scale-1: 10px;
+	--gap-scale-2: 8px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Vazirmatn", sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: var(--white-color);
+}
+
+input {
+	outline: 0;
+}
+
+.container {
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+}

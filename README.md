@@ -1,46 +1,144 @@
-# Getting Started with Create React App
+# Ramzinex Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is part of a technical challenge for developing a cryptocurrency platform that lists market data, allows switching between languages, supports offline functionality, and toggles between light and dark themes. The project is built with **React**, **TypeScript**, **Redux Toolkit**, and **Sass**.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Project](#running-the-project)
+- [State Management](#state-management)
+- [Offline Functionality](#offline-functionality)
+- [Theming (Light & Dark Mode)](#theming-light--dark-mode)
+- [Internationalization (i18n)](#internationalization-i18n)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Market List**: Fetches and displays a list of cryptocurrency markets.
+- **Offline Functionality**: Data is cached locally to allow the app to work without an internet connection.
+- **Internationalization (i18n)**: Supports multiple languages with a language switcher.
+- **Dark and Light Theme**: Easily switch between light and dark modes.
+- **Sorting and Filtering**: Allows users to sort and filter market data.
+- **Responsive UI**: Mobile-first design to ensure a great user experience across all devices.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React**: For building the user interface.
+- **TypeScript**: Type-safe JavaScript to catch errors early.
+- **Redux Toolkit**: For managing global state.
+- **Redux-Persist**: For persisting data across browser reloads.
+- **Sass (SCSS)**: For styling, with support for CSS variables for theming.
+- **i18next**: For handling language translations.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
 
-### `npm run build`
+```bash
+.
+├── src
+│   ├── api                 # API service functions
+│   ├── components          # Reusable components
+│   ├── hooks               # Custom Hooks
+│   ├── i18n                # Internationalization (i18next) setup
+│   ├── pages               # Page components (e.g., MarketsList)
+│   ├── redux               # Redux setup, slices, and actions
+│   ├── types               # Global Types
+│   ├── App.scss            # Root Style
+│   ├── App.tsx             # Root component
+│   └── index.scss          # Entry Style
+│   └── index.tsx           # Entry point
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Before you begin, ensure you have the following installed on your system:
 
-### `npm run eject`
+- [Node.js](https://nodejs.org/en/download/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```bash
+   git clone https://github.com/farshaddev/ramzinex-task.git
+   cd ramzinex-task
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Install the dependencies:
 
-## Learn More
+   ```bash
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   or
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   yarn install
+   ```
+
+### Running the Project
+
+To start the development server:
+
+```bash
+npm start
+```
+
+or
+
+```bash
+yarn start
+```
+
+This will open the project at `http://localhost:3000`.
+
+## State Management
+
+State is managed using **Redux Toolkit**. The `marketSlice.ts` handles the fetching of market data. The state is cached using **Redux-Persist** to ensure that market data remains available even when offline.
+
+Key actions:
+- **getMarkets**: Fetches market data from the API and stores it in Redux.
+- **getCurrencies**: Fetches currency data and stores it in Redux.
+
+## Offline Functionality
+
+The app uses **Redux-Persist** to save fetched data (markets and currencies) in `localStorage`. If the user loses internet connectivity, the app will automatically load data from local storage.
+
+- **Caching Data**: Data is saved to local storage after successful API calls.
+- **Offline Mode**: When offline, the app retrieves data from local storage.
+
+## Theming (Light & Dark Mode)
+
+The app supports light and dark modes. It uses **CSS variables** to control theme colors, and **Redux** to toggle between themes.
+
+To switch themes:
+- A **Theme Switcher** button allows users to toggle between light and dark modes.
+- The theme preference is stored in Redux and persists across sessions.
+
+## Internationalization (i18n)
+
+The project uses **i18next** for internationalization. Supported languages include English and Persian (or others as needed).
+
+To switch languages:
+- Use the **LanguageSwitcher** component, which updates the language in the Redux state and the i18n instance.
+
+### Adding New Languages
+
+To add a new language:
+1. Add the language JSON file to `src/i18n/locales/`.
+2. Update the `i18n.ts` configuration to include the new language.
+3. Use the `t` function in your components to access translations.
+
+## License
+
+This project is licensed under the MIT License.

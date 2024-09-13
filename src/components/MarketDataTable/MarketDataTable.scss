@@ -1,0 +1,42 @@
+.market-table {
+    width: 100%;
+    border-spacing: 0;
+    padding: var(--padding-scale-1);
+    
+    &__sort {
+        display: flex;
+        gap: 14px;
+        color: var(--title-text-color);
+        font-size: var(--font-scale-4);
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        font-weight: 500;
+
+        svg {
+            color: var(--primary-icon-color);
+        }
+    }
+    &__row {
+        cursor: pointer;
+        color: var(--primary-text-color);
+
+        &-field {
+            padding: var(--padding-scale-1) 0;
+            border-bottom: 1px solid var(--primary-border-color);
+
+            &-data {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                gap: var(--gap-scale-1);
+            }
+        }
+
+        &:last-child {
+            .market-table__row-field {
+                border-bottom: 0;
+            }
+        }
+    }
+}

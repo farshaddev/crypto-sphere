@@ -1,0 +1,14 @@
+.language-switcher {
+    display: flex;
+    align-items: center;
+
+    .language-switcher__button {
+        background-color: transparent;
+        border: 0;
+        color: var(--title-text-color);
+        font-size: var(--font-scale-1);
+        height: auto;
+        display: flex;
+        cursor: pointer;
+    }
+}

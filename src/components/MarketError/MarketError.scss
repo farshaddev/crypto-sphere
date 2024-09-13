@@ -1,0 +1,21 @@
+.error {
+    background-color: var(--danger-color);
+    color: var(--primary-border-color);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-scale-2);
+    padding: var(--padding-scale-1);
+    border-radius: var(--radius-scale-1);
+    min-width: 250px;
+    justify-content: center;
+    &__icon {
+        font-size: var(--font-scale-3);
+        margin-right: 8px;
+    }
+    &__retry {
+        border: transparent;
+        padding: 2px 4px;
+        background-color: var(--primary-border-color);
+        border-radius: 2px;
+    }
+}
