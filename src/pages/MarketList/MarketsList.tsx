@@ -19,11 +19,11 @@ const MarketsList: React.FC = () => {
 	useEffect(() => {
 		dispatch(getMarkets());
 
-		// const interval = setInterval(() => {
-		// 	dispatch(getMarkets());
-		// }, 20000);
+		const interval = setInterval(() => {
+			dispatch(getMarkets());
+		}, 20000);
 
-		// return () => clearInterval(interval);
+		return () => clearInterval(interval);
 	}, [dispatch]);
 
 	const handleRetry = () => {

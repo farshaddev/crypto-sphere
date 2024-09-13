@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchMarkets, fetchCurrencies } from "../../api/marketService";
-import { Currency, Market, MarketState } from "../../types";
+import { Currency, Market, InitialState } from "../../types";
 
 export const getMarkets = createAsyncThunk<Market[], void>(
 	"market/getMarkets",
@@ -18,7 +18,7 @@ export const getCurrencies = createAsyncThunk<Currency[], void>(
 	}
 );
 
-const initialState: MarketState = {
+const initialState: InitialState = {
 	markets: [],
 	currencies: [],
 	loading: false,

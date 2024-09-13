@@ -59,7 +59,7 @@ export interface Currency {
 	international_price: number | null;
 }
 
-export interface MarketState {
+export interface InitialState {
 	markets: Market[];
 	currencies: Currency[];
 	loading: boolean;

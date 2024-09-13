@@ -20,17 +20,17 @@ const MarketDetails: React.FC = () => {
 	return (
 		<div className="market-details">
 			<div className="market-details__list">
-        <div className="market-details__list-primary">
-          <img
-            src={market.logo}
-            alt={market.name.fa}
-            width={40}
-            height={40}
-          />
-          <h1 className="market-details__list-primary-title">
-            {market.name.fa}
-          </h1>
-        </div>
+				<div className="market-details__list-primary">
+					<img
+						src={market.logo}
+						alt={market.name.fa}
+						width={40}
+						height={40}
+					/>
+					<h1 className="market-details__list-primary-title">
+						{market.name.fa}
+					</h1>
+				</div>
 				<div className="market-details__list-item">
 					<span className="market-details__list-item-field">
 						{t("englishName")}

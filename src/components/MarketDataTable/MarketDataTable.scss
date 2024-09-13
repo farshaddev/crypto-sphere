@@ -1,5 +1,8 @@
 .market-table {
     width: 100%;
+    border-spacing: 0;
+    padding: var(--padding-scale-1);
+    
     &__sort {
         display: flex;
         gap: 14px;
@@ -16,6 +19,7 @@
     }
     &__row {
         cursor: pointer;
+        color: var(--primary-text-color);
 
         &-field {
             padding: var(--padding-scale-1) 0;
