@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+
+:root {
+    // texts
+    --primary-text-color: #41474F;
+    --secondary-text-color: #62676E;
+    --title-text-color: #8F9398;
+    --placeholder-text-color: #BCBEC1;
+
+    // icons
+    --primary-icon-color: #E0E0E0;
+
+    // borders
+    --primary-border-color: #F5F5F5;
+
+    // font-size
+    --font-scale-1: 18px;
+    --font-scale-2: 16px;
+    --font-scale-3: 14px;
+    --font-scale-4: 12px;
+
+    // border-radius
+    --radius-scale-1: 8px;
+
+    // padding
+    --padding-scale-1: 8px;
+
+    // gap
+    --gap-scale-1: 10px;
+    --gap-scale-2: 8px;
+}
+
+[data-theme="dark"] {
+    // texts
+}
+
+body {
+	font-family: "Vazirmatn", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+input {
+    outline: 0;
+}
+
+.container {
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+}
+

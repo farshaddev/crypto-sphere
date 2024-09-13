@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { getMarkets, clearError } from "../redux/slices/marketSlice";
-import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { useTranslation } from 'react-i18next';
+import { getMarkets, clearError } from "../../redux/slices/marketSlice";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import MarketListHeader from "../../components/MarketListHeader/MarketListHeader";
+import MarketDataTable from "../../components/MarketDataTable/MarketDataTable";
+import "./MarketList.scss"
 
 const MarketsList: React.FC = () => {
-	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const { markets, loading, error } = useAppSelector(
-		(state) => state.market
-	);
+	const { markets, loading, error } = useAppSelector((state) => state.market);
 	const [search, setSearch] = useState("");
 	const [sortKey, setSortKey] = useState<"name" | "price">("name");
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		dispatch(getMarkets());
 
-		const interval = setInterval(() => {
-			dispatch(getMarkets());
-		}, 20000);
+		// const interval = setInterval(() => {
+		// 	dispatch(getMarkets());
+		// }, 20000);
 
-		return () => clearInterval(interval);
+		// return () => clearInterval(interval);
 	}, [dispatch]);
 
 	const handleRetry = () => {
 		dispatch(clearError());
 		dispatch(getMarkets());
+	};
+
+	const handleRowClick = (pair_id: number) => {
+		navigate(`/market/${pair_id}`);
 	};
 
 	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,29 +57,9 @@ const MarketsList: React.FC = () => {
 		);
 
 	return (
-		<div>
-			<input
-				type="text"
-				value={search}
-				onChange={handleSearch}
-				placeholder={t("searchTitle")}
-			/>
-			<select
-				onChange={(e) => setSortKey(e.target.value as "name" | "price")}
-			>
-				<option value="name">Sort by Name</option>
-				<option value="price">Sort by Price</option>
-			</select>
-			<ul>
-				{filteredMarkets.map((market) => (
-					<li key={market.pair_id}>
-						<Link to={`/market/${market.pair_id}`}>
-							{market.name.fa} ||
-							{market.sell}
-						</Link>
-					</li>
-				))}
-			</ul>
+		<div className="market-list">
+			<MarketListHeader search={search} handleSearch={handleSearch} />
+			<MarketDataTable setSortKey={setSortKey} handleRowClick={handleRowClick} filteredMarkets={filteredMarkets} />
 		</div>
 	);
 };

@@ -10,6 +10,11 @@ const useI18n = () => {
 
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);
+      
+    if (currentLanguage === 'fa')
+      document.body.setAttribute('dir', 'rtl');
+    else
+      document.body.setAttribute('dir', 'ltr');
 
     const handleLanguageChange = (lng: string) => {
       dispatch(setLanguage(lng));

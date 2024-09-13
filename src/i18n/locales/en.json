@@ -1,3 +1,5 @@
 {
-    "searchTitle": "Search markets ..."
+    "searchTitle": "Search markets",
+    "tableTitleName": "Name",
+    "tableTitlePrice": "Latest Price"
 }
