@@ -33,7 +33,7 @@ const MarketsList: React.FC = () => {
 	const sortedMarkets = [...markets].sort((a, b) => {
 		return sortKey === "name"
 			? a.name.en.localeCompare(b.name.en)
-			: a.price - b.price;
+			: a.sell - b.sell;
 	});
 
 	const filteredMarkets = sortedMarkets.filter((market) =>
@@ -68,7 +68,8 @@ const MarketsList: React.FC = () => {
 				{filteredMarkets.map((market) => (
 					<li key={market.pair_id}>
 						<Link to={`/market/${market.pair_id}`}>
-							{market.name.fa}
+							{market.name.fa} ||
+							{market.sell}
 						</Link>
 					</li>
 				))}
